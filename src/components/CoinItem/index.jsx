@@ -29,6 +29,8 @@ const index = ({
 
   const percentageColor =
     price_change_percentage_24h < 0 ? "#ea3943" : "#16c784";
+  const percentageIconName =
+    price_change_percentage_24h < 0 ? "caretdown" : "caretup";
 
   return (
     <View style={styles.coinContainer}>
@@ -49,7 +51,7 @@ const index = ({
           </View>
           <Text style={styles.text}>{symbol.toUpperCase()}</Text>
           <AntDesign
-            name="caretdown"
+            name={percentageIconName}
             size={12}
             color={percentageColor}
             style={{ alignSelf: "center", marginRight: 5 }}

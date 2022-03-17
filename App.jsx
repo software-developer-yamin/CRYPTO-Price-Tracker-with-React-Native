@@ -6,6 +6,7 @@ import cryptocurrencies from "./assets/data/cryptocurrencies.json";
 export default function App() {
   return (
     <View style={styles.container}>
+      <FlatList data={cryptocurrencies} renderItem={({ item }) => <CoinItem marketCoin={item} />} />
       <StatusBar style="light" />
     </View>
   );

@@ -27,6 +27,9 @@ const index = ({
     }
   };
 
+  const percentageColor =
+    price_change_percentage_24h < 0 ? "#ea3943" : "#16c784";
+
   return (
     <View style={styles.coinContainer}>
       <Image
@@ -48,7 +51,7 @@ const index = ({
           <AntDesign
             name="caretdown"
             size={12}
-            color="white"
+            color={percentageColor}
             style={{ alignSelf: "center", marginRight: 5 }}
           />
           <Text style={styles.text}>

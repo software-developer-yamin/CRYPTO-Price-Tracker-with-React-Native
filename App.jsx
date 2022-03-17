@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
 import CoinDetailedScreen from "./src/screens/CoinDetailedScreen";
 
+
 export default function App() {
   return (
     <View style={styles.container}>

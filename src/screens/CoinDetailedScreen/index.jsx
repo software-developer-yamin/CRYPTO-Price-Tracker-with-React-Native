@@ -1,9 +1,10 @@
-import { Text, View } from "react-native";
+import { View } from "react-native";
+import CoinDetailHeader from "./components/CoinDetailHeader";
 
 const index = () => {
   return (
     <View>
-      <Text style={{ color: "white" }}>index</Text>
+      <CoinDetailHeader />
     </View>
   );
 };

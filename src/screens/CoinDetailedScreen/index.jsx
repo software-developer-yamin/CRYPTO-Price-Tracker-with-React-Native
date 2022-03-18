@@ -1,6 +1,7 @@
 import { View } from "react-native";
 import Coin from "../../../assets/data/crypto.json";
 import CoinDetailHeader from "./components/CoinDetailHeader";
+import CoinDetailPriceConverter from "./components/CoinDetailPriceConverter";
 import CoinDetailPriceView from "./components/CoinDetailPriceView";
 
 const index = () => {
@@ -8,7 +9,6 @@ const index = () => {
     image: { small },
     name,
     symbol,
-    prices,
     market_data: {
       market_cap_rank,
       current_price,
@@ -28,6 +28,7 @@ const index = () => {
         currentPrice={current_price}
         priceChangePercentage24h={price_change_percentage_24h}
       />
+      <CoinDetailPriceConverter symbol={symbol} currentPrice={current_price} />
     </View>
   );
 };

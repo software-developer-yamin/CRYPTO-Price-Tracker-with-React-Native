@@ -8,6 +8,7 @@ const index = () => {
     image: { small },
     name,
     symbol,
+    prices,
     market_data: {
       market_cap_rank,
       current_price,

@@ -1,5 +1,6 @@
 import { AntDesign } from "@expo/vector-icons";
-import { Image, Text, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { Image, Pressable, Text, View } from "react-native";
 import styles from "./styles";
 
 const index = ({
@@ -27,13 +28,18 @@ const index = ({
     }
   };
 
+  const navigation = useNavigation();
+
   const percentageColor =
     price_change_percentage_24h < 0 ? "#ea3943" : "#16c784";
   const percentageIconName =
     price_change_percentage_24h < 0 ? "caretdown" : "caretup";
 
   return (
-    <View style={styles.coinContainer}>
+    <Pressable
+      style={styles.coinContainer}
+      onPress={() => navigation.navigate("CoinDetailed")}
+    >
       <Image
         source={{ uri: image }}
         style={{
@@ -67,7 +73,7 @@ const index = ({
           MCap {normalizeMarketCap(market_cap)}
         </Text>
       </View>
-    </View>
+    </Pressable>
   );
 };
 

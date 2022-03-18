@@ -1,11 +1,19 @@
 import { EvilIcons, Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 import { Image, Text, View } from "react-native";
 import styles from "./styles";
 
 const index = ({ image, symbol, marketCapRank }) => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.headerContainer}>
-      <Ionicons name="chevron-back" size={30} color="white" />
+      <Ionicons
+        name="chevron-back"
+        size={30}
+        color="white"
+        onPress={() => navigation.goBack()}
+      />
       <View style={styles.tickerContainer}>
         <Image source={{ uri: image }} style={{ width: 25, height: 25 }} />
         <Text style={styles.tickerTitle}>{symbol.toUpperCase()}</Text>

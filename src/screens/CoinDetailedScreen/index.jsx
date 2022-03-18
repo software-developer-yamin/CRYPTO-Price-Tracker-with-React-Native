@@ -4,7 +4,7 @@ import CoinDetailHeader from "./components/CoinDetailHeader";
 import CoinDetailPriceConverter from "./components/CoinDetailPriceConverter";
 import CoinDetailPriceView from "./components/CoinDetailPriceView";
 
-const index = () => {
+const CoinDetailedScreen = () => {
   const {
     image: { small },
     name,
@@ -33,4 +33,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default CoinDetailedScreen;

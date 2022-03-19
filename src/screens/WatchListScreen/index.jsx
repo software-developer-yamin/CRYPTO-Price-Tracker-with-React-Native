@@ -1,9 +1,12 @@
 import { Text, View } from "react-native";
+import { useWatchList } from "../../contexts/WatchListContext";
 
 const WatchListScreen = () => {
+  const { watchListCoinIds } = useWatchList();
+  console.log(watchListCoinIds);
   return (
     <View>
-      <Text>WatchList Screen</Text>
+      <Text style={{ color: "white" }}>WatchList Screen</Text>
     </View>
   );
 };

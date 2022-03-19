@@ -52,21 +52,21 @@ const index = ({
       />
       <View>
         <Text style={styles.title}>{name}</Text>
-        <View style={{ flexDirection: "row" }}>
-          <View style={styles.rankContainer}>
-            <Text style={styles.rank}>{market_cap_rank}</Text>
+          <View style={{ flexDirection: "row" }}>
+            <View style={styles.rankContainer}>
+              <Text style={styles.rank}>{market_cap_rank}</Text>
+            </View>
+            <Text style={styles.text}>{symbol.toUpperCase()}</Text>
+            <AntDesign
+              name={percentageIconName}
+              size={12}
+              color={percentageColor}
+              style={{ alignSelf: "center", marginRight: 5 }}
+            />
+            <Text style={styles.text}>
+              {price_change_percentage_24h.toFixed(2)}%
+            </Text>
           </View>
-          <Text style={styles.text}>{symbol.toUpperCase()}</Text>
-          <AntDesign
-            name={percentageIconName}
-            size={12}
-            color={percentageColor}
-            style={{ alignSelf: "center", marginRight: 5 }}
-          />
-          <Text style={styles.text}>
-            {price_change_percentage_24h.toFixed(2)}%
-          </Text>
-        </View>
       </View>
       <View style={{ marginLeft: "auto" }}>
         <Text style={styles.title}>{current_price}</Text>

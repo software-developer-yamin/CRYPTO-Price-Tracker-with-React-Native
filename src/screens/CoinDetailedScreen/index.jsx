@@ -1,7 +1,8 @@
 import { useRoute } from "@react-navigation/native";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Text, View } from "react-native";
+import { View } from "react-native";
+import Loading from "../../components/Loading";
 import Header from "./components/Header";
 import Price from "./components/Price";
 import PriceConverter from "./components/PriceConverter";
@@ -22,14 +23,10 @@ const CoinDetailedScreen = () => {
     );
     setCoin(res.data);
     setLoading(false);
-  }, []);
+  }, [coinId]);
 
   if (loading || !coin) {
-    return (
-      <View>
-        <Text style={{ color: "white" }}>Loading...</Text>
-      </View>
-    );
+    return <Loading />;
   }
 
   const {

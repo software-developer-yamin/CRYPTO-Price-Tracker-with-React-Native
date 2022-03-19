@@ -7,6 +7,7 @@ const BottomTabsNavigator = () => {
 
   return (
     <Tab.Navigator
+      initialRouteName="Home"
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: "white",
@@ -20,7 +21,7 @@ const BottomTabsNavigator = () => {
         name="Home"
         component={HomeScreen}
         options={{
-          tabBarIcon: ({ focused,color }) => (
+          tabBarIcon: ({ focused, color }) => (
             <Entypo name="home" size={focused ? 30 : 25} color={color} />
           ),
         }}

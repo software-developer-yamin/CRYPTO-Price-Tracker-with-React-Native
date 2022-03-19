@@ -1,10 +1,37 @@
-import { View } from "react-native";
-import Coin from "../../../assets/data/crypto.json";
-import CoinDetailHeader from "./components/CoinDetailHeader";
-import CoinDetailPriceConverter from "./components/CoinDetailPriceConverter";
-import CoinDetailPriceView from "./components/CoinDetailPriceView";
+import { useRoute } from "@react-navigation/native";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Text, View } from "react-native";
+import Header from "./components/Header";
+import Price from "./components/Price";
+import PriceConverter from "./components/PriceConverter";
 
 const CoinDetailedScreen = () => {
+  const [coin, setCoin] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const route = useRoute();
+  const {
+    params: { coinId },
+  } = route;
+
+  useEffect(async () => {
+    setLoading(true);
+    const res = await axios.get(
+      `https://api.coingecko.com/api/v3/coins/${coinId}?localization=false&tickers=true&market_data=true&community_data=false&developer_data=false&sparkline=false`
+    );
+    setCoin(res.data);
+    setLoading(false);
+  }, []);
+
+  if (loading || !coin) {
+    return (
+      <View>
+        <Text style={{ color: "white" }}>Loading...</Text>
+      </View>
+    );
+  }
+
   const {
     image: { small },
     name,
@@ -14,21 +41,17 @@ const CoinDetailedScreen = () => {
       current_price,
       price_change_percentage_24h,
     },
-  } = Coin;
+  } = coin;
 
   return (
     <View style={{ paddingHorizontal: 10 }}>
-      <CoinDetailHeader
-        image={small}
-        symbol={symbol}
-        marketCapRank={market_cap_rank}
-      />
-      <CoinDetailPriceView
+      <Header image={small} symbol={symbol} marketCapRank={market_cap_rank} />
+      <Price
         name={name}
         currentPrice={current_price}
         priceChangePercentage24h={price_change_percentage_24h}
       />
-      <CoinDetailPriceConverter symbol={symbol} currentPrice={current_price} />
+      <PriceConverter symbol={symbol} currentPrice={current_price} />
     </View>
   );
 };

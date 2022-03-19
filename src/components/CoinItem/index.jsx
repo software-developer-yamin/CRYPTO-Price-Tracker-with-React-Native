@@ -12,6 +12,7 @@ const index = ({
     symbol,
     market_cap,
     image,
+    id,
   },
 }) => {
   const normalizeMarketCap = (marketCap) => {
@@ -38,7 +39,7 @@ const index = ({
   return (
     <Pressable
       style={styles.coinContainer}
-      onPress={() => navigation.navigate("CoinDetailed")}
+      onPress={() => navigation.navigate("CoinDetailed", { coinId: id })}
     >
       <Image
         source={{ uri: image }}

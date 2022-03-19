@@ -30,6 +30,7 @@ const CoinDetailedScreen = () => {
   }
 
   const {
+    id,
     image: { small },
     name,
     symbol,
@@ -42,7 +43,7 @@ const CoinDetailedScreen = () => {
 
   return (
     <View style={{ paddingHorizontal: 10 }}>
-      <Header image={small} symbol={symbol} marketCapRank={market_cap_rank} />
+      <Header image={small} symbol={symbol} marketCapRank={market_cap_rank} coinId={id} />
       <Price
         name={name}
         currentPrice={current_price}

@@ -21,18 +21,34 @@ const WatchListProvider = ({ children }) => {
     getWatchListData();
   }, []);
 
-  const storeWatchlistData = async (coinId) => {
+  const storeWatchlistCoinId = async (coinId) => {
     try {
       const newWatchList = [...watchListCoinIds, coinId];
       const jsonValue = JSON.stringify(newWatchList);
       await AsyncStorage.setItem("@watchlist_coins", jsonValue);
+      setWatchListCoinIds(newWatchList);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const removeWatchlistCoinId = async (coinId) => {
+    try {
+      const newWatchList = watchListCoinIds.filter(
+        (coinValue) => coinValue !== coinId
+      );
+      const jsonValue = JSON.stringify(newWatchList);
+      await AsyncStorage.setItem("@watchlist_coins", jsonValue);
+      setWatchListCoinIds(newWatchList);
     } catch (e) {
       console.log(e);
     }
   };
 
   return (
-    <WatchListContext.Provider value={{ watchListCoinIds }}>
+    <WatchListContext.Provider
+      value={{ watchListCoinIds, storeWatchlistCoinId, removeWatchlistCoinId }}
+    >
       {children}
     </WatchListContext.Provider>
   );
